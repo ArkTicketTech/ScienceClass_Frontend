@@ -1,0 +1,160 @@
+@import "manage.less";
+
+* {
+  font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+}
+body,
+html {
+  height: 100%;
+}
+body {
+  background-color: white;
+}
+.inner-wrapper {
+  width: 600px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+#page-wrapper {
+  padding-top: 30px;
+  .title {
+    margin-top: 15px;
+    .breadcrumb {
+      margin-bottom: 15px;
+    }
+  }
+  .btn-group {
+    margin-bottom: 15px;
+  }
+  .content {
+    position: relative;
+    padding: 0 15px;
+    white-space: nowrap;
+    button.btn {
+      width: 100px;
+      border-radius: 2px;
+    }
+  }
+}
+
+.item{
+  .item-input {
+    margin-bottom: 10px;
+  }
+  .item-name {
+    transform: scale(.75);
+    font-size: 14px;
+    color: rgba(0,0,0,0.54);
+    margin: 0px 10px 0px -10px;
+    vertical-align: -1px;
+    min-width: 100px;
+  }
+}
+
+.unInline-item {
+  .table-name {
+    margin: 15px 0px;
+  }
+}
+
+.inline-item {
+  .table-name {
+    line-height: 30px;
+    width: 22%;
+    text-align: right;
+  }
+  .item {
+    margin-bottom: 0px;
+    .item_name {
+      display: none;
+    }
+    .form-control {
+      height: 30px;
+      max-width: 150px;
+    }
+  }
+}
+.md-2-line.active {
+  background-color: rgba(158,158,158,0.2);
+}
+
+.btn-group.outer {
+  .btn-group.inner {
+    margin-right: 10px;
+    .delete {
+      border-top-right-radius: 4px!important;
+      border-bottom-right-radius: 4px!important;
+      width: 30px;
+      height: 34px;
+      padding: 0px;
+      text-align: center;
+      line-height: 32px;
+      font-size: 14px;
+    }
+  }
+  .add {
+      border-top-left-radius: 4px!important;
+      border-bottom-left-radius: 4px!important;
+      font-size: 14px;
+      line-height: 32px;
+      width: 34px;
+      height: 34px;
+      padding: 0px;
+      text-align: center;
+  }
+}
+
+td > a {
+  cursor: pointer;
+}
+
+.radio-inline > input[type=checkbox] {
+  position: absolute;
+  margin-left: -20px;
+}
+
+.md-header-primary {
+  background-color: rgb(33,150,243);
+  color: white;
+  .md-subhead {
+    color: white!important;
+  }
+}
+
+.patient-list {
+  &:hover {
+    background-color:rgb(213,213,213);
+  }
+}
+
+#sidebar {
+  a {
+    color: black;
+  }
+  background-color: white;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.single_select {
+  height: 58px;
+}
+
+.multi_select {
+  .item-name {
+    display: inline-block;
+    width: 25%
+  }
+  .radio-list {
+    display: inline-block;
+    width: 75%;
+    white-space: normal;
+    vertical-align: top;
+    .radio-inline:first-child{
+      margin-left: 10px;
+    }
+  }
+}

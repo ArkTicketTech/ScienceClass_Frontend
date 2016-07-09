@@ -1,0 +1,45 @@
+{
+  "json_version": "20160420",
+  "data_tree": [
+    {
+      "node": {
+        "node_name": {
+          "CN": "病人基本信息",
+          "EN": "Testxxx"
+        },
+        "sub_node": [
+          {
+            "node_name": {
+              "CN": "基本信息",
+              "EN": "Testxxx"
+            },
+            "group_node": [
+              {
+                "group_name": {
+                  "CN": "基本信息"
+                },
+                "item_list": [
+                  {
+                    "item_name": {
+                      "CN": "身高"
+                    },
+                    "item_value": 180,
+                    "item_value_type": "number"
+                  },
+                  {
+                    "item_name": {
+                      "CN": "哈哈"
+                    },
+                    "item_value": 180,
+                    "item_value_type": "number"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+

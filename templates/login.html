@@ -1,0 +1,23 @@
+<div class="inner-wrapper">
+  <md-card>
+    <md-card-header class="md-header-primary">
+      <md-card-header-text>
+        <span class="md-title">Login</span>
+        <span class="md-subhead">Welcome to Science Class</span>
+      </md-card-header-text>
+    </md-card-header>
+    <md-card-content>
+      <md-input-container class="md-block">
+        <label>Email</label>
+        <input ng-model="user.email">
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Password</label>
+        <input type="password" ng-model="user.password">
+      </md-input-container>
+    </md-card-content>
+    <md-card-action>
+      <md-button class="md-raised md-primary" ng-click="submit();">Login</md-button>
+    </md-card-action>
+  </md-card>
+</div>

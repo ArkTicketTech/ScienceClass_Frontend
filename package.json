@@ -1,0 +1,37 @@
+{
+  "name": "dynamic-form",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "prebuild": "npm install",
+    "build": "webpack",
+    "watch": "API_ROOT='http://localhost:3003' webpack --watch",
+    "server": "node proxy.js",
+    "start": "npm run watch & npm run server"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.5.3",
+    "autoprefixer": "^6.3.6",
+    "normalize.css": "^4.0.0",
+    "postcss-loader": "^0.8.2",
+    "precss": "^1.4.0"
+  },
+  "devDependencies": {
+    "angular-animate": "^1.5.5",
+    "angular-aria": "^1.5.5",
+    "angular-material": "^1.0.8",
+    "angular-messages": "^1.5.5",
+    "angular-mocks": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "angular-sanitize": "^1.5.5",
+    "css-loader": "^0.23.1",
+    "express": "^4.13.4",
+    "less": "^2.6.1",
+    "less-loader": "^2.2.3",
+    "pm2": "^1.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.12.14"
+  }
+}
