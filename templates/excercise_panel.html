@@ -1,5 +1,6 @@
 <div class="quiz_nav">
 	<span class="font_yh18">{{chapter.name}}</span>
+	<span style="float:right;color: #c1c1c1;"><timer interval="1000">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer></span>
 </div>
 <div class="quiz_container">
 	<div class="quiz_main">
@@ -13,8 +14,8 @@
 			</ul>
 		</div>
 		<div class="quiz_main_footer">
-			<a ng-click="mincur()" style="width: 30%;" class="fl"><i class="glyphicon glyphicon-chevron-left" ></i></a>
-			<a ng-click="addcur()" style="width: 70%;"><i class="glyphicon glyphicon-chevron-right" ></i></a>
+			<a ng-click="mincur()" style="width: 30%;" class="fl"><i class="glyphicon glyphicon-menu-left" ></i></a>
+			<a ng-click="addcur()" style="width: 70%; border-left: 1px solid #E4E4E4;"><i class="glyphicon glyphicon-menu-right" ></i></a>
 		</div>
 	</div>
 	<div class="quiz_sidebar">

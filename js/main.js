@@ -1,7 +1,7 @@
 require('../css/base.less');
 require('../css/test.less')
 
-var scienceclass = angular.module('scienceclass', ['ui.bootstrap', 'ui.router', 'ngMaterial','ngSanitize']);
+var scienceclass = angular.module('scienceclass', ['ui.bootstrap', 'ui.router', 'ngMaterial','ngSanitize', 'timer']);
 scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider,$sceProvider) {
   $sceProvider.enabled(false);
   $httpProvider.defaults.withCredentials = true;
