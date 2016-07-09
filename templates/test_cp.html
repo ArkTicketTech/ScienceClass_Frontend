@@ -1,0 +1,56 @@
+  <section layout="row" flex>
+    <md-sidenav
+        class="sidenav-left md-whiteframe-z2"
+        md-is-locked-open="$mdMedia('gt-sm')">
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">ScienceClass</h1>
+      </md-toolbar>
+      <md-content flex md-scroll-y layout="column">
+          <md-list>
+            <md-list-item class="md-1-line" style="background-color: rgb(33,150,243);color: rgb(255,255,255);" ng-repeat="knowledge in knowledges" >
+              <div class="md-list-item-text">
+                <h5>{{knowledge.name}}</h5>
+              </div>
+            </md-list-item>
+          </md-list>
+      </md-content>
+    </md-sidenav>
+
+    <md-content flex style="background-color: rgb(250, 250, 250);">
+      <div layout="column" layout-fill layout-align="top center">
+        <md-toolbar class="md-whiteframe-glow-z1 excercise-content-toolbar _md" style="position:fixed">
+          <div class="md-toolbar-tools docs-toolbar-tools"  tabindex="-1">
+            <div layout="row" flex="" class="fill-height layout-row flex">
+              <h2 class="md-toolbar-item md-breadcrumb md-headline">
+                <span class="md-breadcrumb-page ng-binding">{{cQuestion.name}}</span>
+              </h2>
+            </div>
+          </div>
+        </md-toolbar>
+        <md-content style="background-color: rgb(250, 250, 250); margin-top:64px;" class="layout-fill">
+          <div layout-padding >
+            <div class="demo-md-panel-animation md-padding" style="background-color: rgb(250, 250, 250);">
+              <div class="md-toolbar-tools docs-toolbar-tools"  tabindex="-1">
+                <div layout="row" flex="" class="fill-height layout-row flex">
+                  <h2 class="md-toolbar-item md-breadcrumb md-headline">
+                    <span class="md-breadcrumb-page ng-binding">{{cQuestion.name}}</span>
+                  </h2>
+                </div>
+              </div>
+              <div layout="row">
+                <div flex="100">
+                  OpenFrom:
+                  <md-radio-group ng-model="ctrl.openFrom">
+                    <md-radio-button value="button">Button</md-radio-button>
+                    <md-radio-button value="corner">Top/Left Corner</md-radio-button>
+                    <md-radio-button value="bottom">Bottom Center</md-radio-button>
+                  </md-radio-group>
+                </div>
+              </div>
+            </div>
+          </div>
+        </md-content>
+      </div>
+      <div flex></div>
+    </md-content>
+  </section>
