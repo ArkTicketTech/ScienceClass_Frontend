@@ -1,4 +1,5 @@
 require('../css/base.less');
+require('../css/test.less')
 
 var scienceclass = angular.module('scienceclass', ['ui.bootstrap', 'ui.router', 'ngMaterial']);
 scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider) {
@@ -16,6 +17,11 @@ scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvi
       url: '/home',
       templateUrl: 'templates/home.html',
     })
+    .state('test', {
+      url: '/test',
+      templateUrl: 'templates/test.html',
+      controller: 'TestCtrl',
+    })
 
   $urlRouterProvider.otherwise('/login');
 });
@@ -24,6 +30,7 @@ scienceclass.controller('RootCtrl', function($scope, $rootScope, $mdDialog, $htt
   $scope.userInfo = User.info;
   //User.fetchInfo();
   $rootScope.lan = 'CN';
+  $rootScope.headershow = true;
   $scope.goto = function(path) {
     window.location.href = '#/' + path;
   };
@@ -41,4 +48,5 @@ scienceclass.controller('RootCtrl', function($scope, $rootScope, $mdDialog, $htt
 
 
 scienceclass.controller('LoginCtrl', require('./login_controller.js'));
+scienceclass.controller('TestCtrl', require('./test_controller.js'));
 scienceclass.service('User', require('./user.js'));
