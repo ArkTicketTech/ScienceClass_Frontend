@@ -20,12 +20,11 @@ var TestCtrl = function ($scope, $http, User, $rootScope) {
   $scope.answer = -1;
 
   $scope.addcur = function(){
-    alert($scope.answer);
     $scope.useranswer[$scope.curr] = $scope.answer;
     if($scope.curr < $scope.total-1){
       $scope.curr ++; 
       $scope.cQuestion = $scope.questions[$scope.curr]; 
-      $scope.answer = -1;
+      //$scope.answer = -1;
     }
   }
 
@@ -34,12 +33,17 @@ var TestCtrl = function ($scope, $http, User, $rootScope) {
     if($scope.curr >= 1){
       $scope.curr --;
       $scope.cQuestion = $scope.questions[$scope.curr]; 
-      $scope.answer = -1;
+      //$scope.answer = -1;
     }
   }
 
+  $scope.correctnum = 0;
   $scope.submit = function(){
-
+    $scope.useranswer[$scope.curr] = $scope.answer;
+    for ( var index in $scope.useranswer ) {
+      if( $scope.useranswer[index] == $scope.questions[index].answer ) $scope.correctnum++;
+    }
+    alert("恭喜您答对了"+$scope.correctnum+"道题目");
   }
 
 }
