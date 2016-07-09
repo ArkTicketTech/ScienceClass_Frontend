@@ -33,12 +33,20 @@ scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvi
         }
       }
     })
-  //$urlRouterProvider.otherwise('/login');
     .state('test', {
       url: '/test',
       templateUrl: 'templates/test.html',
       controller: 'TestCtrl',
     })
+    .state('test.excercise', {
+      url: '/excercise',
+      views: {
+        'excercise_panel':{
+          templateUrl: 'templates/excercise_panel.html'
+        }
+      }
+    })
+  //$urlRouterProvider.otherwise('/login');
 
 });
 
