@@ -1,12 +1,12 @@
 <div class="quiz_nav">
 	<span class="font_yh18">{{chapter.name}}</span>
+	<span style="float:right;color: #c1c1c1;"><timer interval="1000">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer></span>
 </div>
 <div class="quiz_container">
 	<div class="quiz_main">
 		<div class="quiz_main_header">
 			<span>{{curr+1}}.</span>
 			{{cQuestion.name}}
-			<span style="float:right"></span>
 		</div>
 		<div class="quiz_main_content">
 			<ul class="quiz_option_list">
