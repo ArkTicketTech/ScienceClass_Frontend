@@ -14,7 +14,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      __API_ROOT__: JSON.stringify(process.env.API_ROOT || 'http://localhost:8080')
+      __API_ROOT__: JSON.stringify(process.env.API_ROOT || 'http://localhost:3002')
     })
   ],
   postcss: function () {

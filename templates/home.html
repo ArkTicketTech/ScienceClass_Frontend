@@ -1,7 +1,23 @@
 <div class="inner-wrapper">
   <md-card>
     <md-card-action>
-      <md-button class="md-raised md-primary" ng-click="toStudy();">ToStudy</md-button>
+      <md-button class="md-raised md-primary" ng-click="submit();">ToStudy</md-button>
     </md-card-action>
   </md-card>
+  <label>Chicken or the Egg?</label>
+  <div class="form-group">
+      <div class="radio">
+          <label>
+              <input type="radio" name="chickenEgg" value="chicken" ng-model="ttt">
+              Chicken
+          </label>
+      </div>
+      <div class="radio">
+          <label>
+              <input type="radio" name="chickenEgg" value="egg" ng-model="ttt">
+              Egg
+          </label>
+      </div>
+  </div>
+  <label>{{ttt}}</label>
 </div>

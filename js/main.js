@@ -29,7 +29,7 @@ scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvi
           templateUrl:"templates/im.html"
         },
         'bottom-view':{
-          templateUrl:"templates/home.html"
+          template:"<div> xxx </div>"
         }
       }
     })
