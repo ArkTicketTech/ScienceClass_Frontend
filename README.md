@@ -1,4 +1,4 @@
-## 动态表单 Web 前端
+## Science Class Web 前端
 
 ## 配置 
 ```
@@ -12,7 +12,7 @@ $ npm install -g webpack    # Install webpack
 $ npm run start
 ```
 
-会自动监听 3001 端口，在浏览器中输入 localhost:3001 即可看到效果
+会自动监听 3002 端口，在浏览器中输入 localhost:3002 即可看到效果
 
 ## 前端资源管理
 ```
