@@ -1,4 +1,7 @@
-var LoginCtrl = function ($scope, $http, $state,User) {
+var LoginCtrl = function ($scope, $http, User, $rootScope) {
+
+  $scope.user = {};
+  $rootScope.headershow = false;
 
   $scope.submit = function () {
         //todo

@@ -12,7 +12,7 @@
     <title>Science Class</title>
   </head>
   <body ng-controller="RootCtrl" ng-cloak>
-    <md-toolbar>
+    <md-toolbar ng-show="$rootScope.headershow">
       <div class="md-toolbar-tools">
         <md-button class="md-icon-button" aria-label="Settings" ng-click="goto('fileList')">
           <i class="fa fa-align-justify" aria-hidden="true"></i>
