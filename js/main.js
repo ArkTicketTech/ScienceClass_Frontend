@@ -13,6 +13,11 @@ scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvi
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
     })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'templates/register.html',
+      controller: 'RegisterCtrl'
+    })
     .state('home', {
       url: '/home',
       templateUrl: 'templates/home.html',
@@ -72,6 +77,7 @@ scienceclass.controller('RootCtrl', function($scope, $rootScope, $mdDialog, $htt
 
 
 scienceclass.controller('LoginCtrl', require('./login_controller.js'));
+scienceclass.controller('RegisterCtrl', require('./register_controller.js'));
 scienceclass.controller('HomeCtrl', require('./home_controller.js'));
 scienceclass.controller('StudyCtrl', require('./study_controller.js'));
 scienceclass.controller('TestCtrl', require('./test_controller.js'));

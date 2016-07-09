@@ -39,6 +39,25 @@ var user = function ($http, $q) {
         alert(res);
         deffered.reject(res);
       });
+    },
+    register :function(user) {
+      var deferred = $q.defer();
+      $http({
+        method  : 'POST',
+        url     : 'http://172.16.32.218:8000/center/register/',
+        data    : $.param(user),
+        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+      .success(function (res){
+        alert('login success');
+        User.fetchInfo().then(function(){
+          deffered.resolve();
+        });
+      })
+      .error(function (res){
+        alert(res);
+        deffered.reject(res);
+      });
     }
   }
   return service;

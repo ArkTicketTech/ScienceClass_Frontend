@@ -6,7 +6,7 @@ var HomeCtrl = function ($scope, $http,$state, User) {
         window.location.href = '#/study/studyppt';
         //$state.go('study');
   };
-  $scope.imtest = function () {
+  $scope.check = function () {
         //todo
         window.location.href = '#/home';
         //$state.go('study');
