@@ -9,7 +9,7 @@
 		</div>
 		<div class="quiz_main_content">
 			<ul class="quiz_option_list">
-				<li ng-repeat = "choice in cQuestion.content"><label class="link_quiz_option" ><input type="radio" name="answer" class="fl" ng-model="answer" ng-value="{{$index}}"><span class="quiz_num">{{abcd[$index]}}.</span><span class="quiz_choice">{{choice}}</span></label>
+				<li ng-repeat = "choice in cQuestion.content"><label class="link_quiz_option" value="{{$index}}"><input type="radio" name="answer" class="fl" ng-model="$parent.$parent.answer" value="{{$index}}"><span class="quiz_num">{{abcd[$index]}}.</span><span class="quiz_choice">{{choice}}</span></label>
 			</ul>
 		</div>
 		<div class="quiz_main_footer">
@@ -20,8 +20,7 @@
 	<div class="quiz_sidebar">
 		<div class="quiz_sidebar_title">完成 <span class="bold big">{{curr+1}}</span>/{{total}} 题</div>
 		<div class="quiz_sidebar_content">
-			
-			<p class="txt_c p25 por"><a id="btn_submit" class="btn btnWhite_b btn-default">提交</a></p>
+			<p class="txt_c p25 por"><a id="btn_submit" ng-click="submit()" class="btn btnWhite_b btn-default">提交</a></p>
 		</div>
 	</div>
 </div>
