@@ -15,9 +15,24 @@ scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvi
     .state('home', {
       url: '/home',
       templateUrl: 'templates/home.html',
+      controller: 'HomeCtrl'
     })
-
-  $urlRouterProvider.otherwise('/login');
+    .state('study', {
+      url: '/study',
+      templateUrl:"templates/study.html"
+        })
+    .state('study.ppt', {
+      url: '/studyppt',
+      views: {
+        'ppt-view':{
+          templateUrl:"templates/im.html"
+        },
+        'bottom-view':{
+          templateUrl:"templates/home.html"
+        }
+      }
+    })
+  //$urlRouterProvider.otherwise('/login');
 });
 
 scienceclass.controller('RootCtrl', function($scope, $rootScope, $mdDialog, $http, User) {
@@ -41,4 +56,6 @@ scienceclass.controller('RootCtrl', function($scope, $rootScope, $mdDialog, $htt
 
 
 scienceclass.controller('LoginCtrl', require('./login_controller.js'));
+scienceclass.controller('HomeCtrl', require('./home_controller.js'));
+scienceclass.controller('StudyCtrl', require('./study_controller.js'));
 scienceclass.service('User', require('./user.js'));

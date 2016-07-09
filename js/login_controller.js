@@ -1,8 +1,9 @@
-var LoginCtrl = function ($scope, $http, User) {
+var LoginCtrl = function ($scope, $http, $state,User) {
 
-  $scope.user = {};
   $scope.submit = function () {
-        window.location.href = '#/home';
+        //todo
+        $state.go('home');
+        //window.location.href = '#/home';
   };
 }
 
