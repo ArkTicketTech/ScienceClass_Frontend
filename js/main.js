@@ -2,7 +2,8 @@ require('../css/base.less');
 require('../css/test.less')
 
 var scienceclass = angular.module('scienceclass', ['ui.bootstrap', 'ui.router', 'ngMaterial','ngSanitize']);
-scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider) {
+scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider,$sceProvider) {
+  $sceProvider.enabled(false);
   $httpProvider.defaults.withCredentials = true;
   $mdThemingProvider.setDefaultTheme('altTheme');
   $mdThemingProvider.theme('altTheme')

@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "npm install",
     "build": "webpack",
-    "watch": "API_ROOT='http://localhost:3003' webpack --watch",
+    "watch": "API_ROOT='http://172.16.32.218:8000' webpack --watch",
     "server": "node proxy.js",
     "start": "npm run watch & npm run server"
   },
