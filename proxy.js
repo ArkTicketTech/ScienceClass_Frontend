@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var endpoint = process.env.API_ENDPOINT || 'http://localhost:3003';
+var endpoint = 'http://172.16.32.218:8000';
 
 app.get('/', function(req, res) {
   res.sendfile(__dirname + '/index.html');

@@ -8,8 +8,9 @@ var user = function ($http, $q) {
     },
     fetchInfo: function() {
       var deferred = $q.defer();
-      $http.get('/json/user.json')
+      $http.get(__API_ROOT__+'/center/user/-1/')
         .success(function (res){
+          alert('fetch info success');
           service.info.isLogin = true;
           service.info.id = res.id;
           service.info.nickname = res.nickname;
@@ -30,6 +31,7 @@ var user = function ($http, $q) {
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
       .success(function (res){
+        alert('success'+res);
         alert('login success');
         User.fetchInfo().then(function(){
           deffered.resolve();

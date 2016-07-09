@@ -9,11 +9,27 @@ var LoginCtrl = function ($scope, $http, User, $rootScope) {
   });
   $scope.user = {};
   $scope.submit = function () {
-        alert($scope.user.username);
-        User.login($scope.user).then(function(){
-          window.location.href = '#/home';
-        });
+        //User.login($scope.user).then(function(){
+        //  window.location.href = '#/home';
+        //});
         //window.location.href = '#/home';
+
+        $http({
+          method  : 'POST',
+          url     : __API_ROOT__+'/center/login/',
+          data    : $.param($scope.user),
+          headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+              })
+        .success(function (res){
+          alert('login success');
+          User.fetchInfo().then(function(){
+            window.location.href = '#/home';
+
+          });
+        })
+        .error(function (res){
+          alert('login error');
+        });
   };
 }
 

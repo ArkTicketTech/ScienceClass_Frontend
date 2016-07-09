@@ -1,7 +1,7 @@
 require('../css/base.less');
 require('../css/test.less')
 
-var scienceclass = angular.module('scienceclass', ['ui.bootstrap', 'ui.router', 'ngMaterial']);
+var scienceclass = angular.module('scienceclass', ['ui.bootstrap', 'ui.router', 'ngMaterial','ngSanitize']);
 scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider) {
   $httpProvider.defaults.withCredentials = true;
   $mdThemingProvider.setDefaultTheme('altTheme');
@@ -34,7 +34,7 @@ scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvi
           templateUrl:"templates/im.html"
         },
         'bottom-view':{
-          template:"<div> xxx </div>"
+          template:"<div></div>"
         }
       }
     })
@@ -51,20 +51,25 @@ scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvi
         }
       }
     })
+    .state('work', {
+      url: '/work',
+      templateUrl: 'templates/work.html',
+      controller: 'WorkCtrl'
+    })
   //$urlRouterProvider.otherwise('/login');
 
 });
 
 scienceclass.controller('RootCtrl', function($scope, $rootScope, $mdDialog, $http, User) {
   $scope.userInfo = User.info;
-  //User.fetchInfo();
+  User.fetchInfo();
   $rootScope.lan = 'CN';
   $rootScope.headershow = true;
   $scope.goto = function(path) {
     window.location.href = '#/' + path;
   };
   $scope.logout = function() {
-    $http.get(__API_ROOT__ + '/api/v1/user/logout')
+    $http.get(__API_ROOT__ + '/center/user/logout')
       .success(function (res){
         User.info.isLogin = false;
         window.location.href = '#/login'
@@ -81,4 +86,6 @@ scienceclass.controller('RegisterCtrl', require('./register_controller.js'));
 scienceclass.controller('HomeCtrl', require('./home_controller.js'));
 scienceclass.controller('StudyCtrl', require('./study_controller.js'));
 scienceclass.controller('TestCtrl', require('./test_controller.js'));
+scienceclass.controller('ImCtrl', require('./im_controller.js'));
+scienceclass.controller('WorkCtrl', require('./work_controller.js'));
 scienceclass.service('User', require('./user.js'));
