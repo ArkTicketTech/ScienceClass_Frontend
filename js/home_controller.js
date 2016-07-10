@@ -7,6 +7,10 @@ var HomeCtrl = function ($scope, $http, $state, User, $rootScope, $stateParams) 
       $state.go("home",{typeId:target});
   }
 
+  $scope.url2goto = function (target) {
+      window.location.href = "#/test/excercise/1";
+  }
+
   $scope.submit = function () {
         //todo
         window.location.href = '#/study/studyppt';
