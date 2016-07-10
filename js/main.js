@@ -1,6 +1,6 @@
 require('../css/base.less');
-require('../css/test.less')
-
+require('../css/test.less');
+//require('../css/graph.less');
 var scienceclass = angular.module('scienceclass', ['ui.bootstrap', 'ui.router', 'ngMaterial','ngSanitize', 'timer']);
 scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider,$sceProvider) {
   $sceProvider.enabled(false);
@@ -29,7 +29,7 @@ scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvi
       templateUrl:"templates/study.html"
         })
     .state('study.ppt', {
-      url: '/studyppt',
+      url: '/studyppt/:chapter_id',
       views: {
         'ppt-view':{
           templateUrl:"templates/im.html"
@@ -41,14 +41,14 @@ scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvi
     })
     .state('test', {
       url: '/test',
-      templateUrl: 'templates/test.html',
-      controller: 'TestCtrl',
+      templateUrl: 'templates/test.html'
     })
     .state('test.excercise', {
-      url: '/excercise',
+      url: '/excercise/:chapter_id',
       views: {
         'excercise_panel':{
-          templateUrl: 'templates/excercise_panel.html'
+          templateUrl: 'templates/excercise_panel.html',
+          controller: 'TestCtrl'
         }
       }
     })
@@ -56,6 +56,11 @@ scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvi
       url: '/work',
       templateUrl: 'templates/work.html',
       controller: 'WorkCtrl'
+    })
+    .state('graph', {
+      url: '/graph',
+      templateUrl: 'templates/graph.html',
+      controller: 'GraphCtrl'
     })
   //$urlRouterProvider.otherwise('/login');
 

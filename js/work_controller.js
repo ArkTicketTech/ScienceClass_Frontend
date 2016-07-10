@@ -35,7 +35,8 @@ var WorkCtrl = function ($scope, $http,$state) {
         $scope.cur_work = $scope.works[$scope.cur_index];
       }
     }
-      //$scope.works = [{content:'<p>test1</p>'},{content:'<div>test2</div>'}];
+
+
 
     $scope.submit = function() {
       alert("提交成功");

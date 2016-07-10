@@ -1,44 +1,12 @@
 <link href="lib/impress-demo.css" rel="stylesheet" />
 <link href="lib/custom.css" rel="stylesheet" />
 
-<div id="impress" class="impress-not-supported" ng-controller="ImCtrl">
-  {{ppt_div}}
-<!--    <div class="fallback-message">
-        <p>你的浏览器<b>不支持</b> impress.js, 所以当前展示的是简化版。</p>
-        <p>为了获得更好的体验，请使用最新的 <b>Chrome</b>, <b>Safari</b> 或者 <b>Firefox</b> 浏览器。</p>
-    </div>
 
-    <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
-        <span class="try">最佳技术分享工具</span>
-        <h1>impress.js<sup>*</sup></h1>
-        <span class="footnote"> <a href="#/exp1">浏览</a> <a href="#/dev1">创建</a> <a href="#/last">结语</a></span>
-    </div>
-
-    <div id="exp1" class="step" data-x="-1300" data-y="1300" data-rotate="720">
-        <q>最新的 <b>Chrome</b>, <b>Safari</b> 或者 <b>Firefox</b> 浏览器，不支持IE、Opera。使用Chrome效果最佳。</q>
-    </div>
-
-    <div id="exp2" class="step" data-x="0" data-y="1300" data-rotate="720">
-        <q>浏览快捷键</q><br />
-        <q>上一页 <code>pg up</code> <code>left</code> <code>up</code><br />
-        下一页 <code>tab</code> <code>space</code> <code>pg down</code> <code>right</code> <code>down</code></q>
-    </div>
-
-    <div id="exp3" class="step" data-x="1300" data-y="1300" data-rotate="720">
-        <input ng-/>
-        <input />
-        <button ng-click="check();"> test</button>
-    </div>
-
-    <div id="last" class="step" data-x="0" data-y="3000" data-scale="3" data-rotate="720">
-        <q>结语：</q><br />
-        <p class="normal">没有做不到的，只有想不到的。</p>
-        <p class="normal">官方网站：<a href="http://bartaz.github.com/impress.js" target="_blank">http://bartaz.github.com/impress.js/</a></p>
-    </div>
-
-  </div>-->
+<div id="impress"  ng-controller="ImCtrl"  ng-bind-html="PPT">
 
 </div>
 
 <script src="lib/impress.js"></script>
-<script>impress();</script>
+<script>
+  setTimeout(function() {impress()}, 2000);
+</script>

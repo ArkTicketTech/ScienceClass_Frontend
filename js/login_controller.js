@@ -4,7 +4,7 @@ var LoginCtrl = function ($scope, $http, User, $rootScope) {
 
   User.fetchInfo().then(function (res){
     if (User.info.isLogin) {
-      window.location.href = '#/home';
+      window.location.href = '#/graph';
     }
   });
   $scope.user = {};
@@ -23,7 +23,7 @@ var LoginCtrl = function ($scope, $http, User, $rootScope) {
         .success(function (res){
           alert('login success');
           User.fetchInfo().then(function(){
-            window.location.href = '#/home';
+            window.location.href = '#/graph';
 
           });
         })

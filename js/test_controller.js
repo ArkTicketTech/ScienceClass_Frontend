@@ -1,4 +1,5 @@
-var TestCtrl = function ($scope, $http, User, $rootScope) {
+var TestCtrl = function ($scope, $http, $rootScope, $stateParams) {
+  $scope.id = $stateParams.chapter_id;
   var convertToQuestions = require('./convert-test.js');
   $scope.user = {};
   $rootScope.headershow = false;
@@ -6,7 +7,7 @@ var TestCtrl = function ($scope, $http, User, $rootScope) {
   $scope.chapter = {name: 'chapter1'};
   $http({
     method  : 'GET',
-    url     : 'http://172.16.32.218:8000/classroom/test/1/10/',
+    url     : __API_ROOT__+'/classroom/test/'+$scope.id+'/10/',
           })
   .success(function (res){
       $scope.isloading = false;

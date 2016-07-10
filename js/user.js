@@ -10,7 +10,7 @@ var user = function ($http, $q) {
       var deferred = $q.defer();
       $http.get(__API_ROOT__+'/center/user/-1/')
         .success(function (res){
-          alert('fetch info success');
+          //alert('fetch info success');
           service.info.isLogin = true;
           service.info.id = res.id;
           service.info.nickname = res.nickname;

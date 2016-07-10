@@ -1,0 +1,398 @@
+<div class="inner-wrapper">
+	<div id="graph-view">
+	</div>
+</div>
+
+<script type="text/javascript">
+	var width = 960;
+	var height = 800;
+	var color = ["#54a4ee", "#bedaf4", "#e6e8ea"];
+
+
+	function init_display() {
+		var svg = d3.select("#graph-view").append("svg")
+		.attr("width", width)
+		.attr("height", height);
+
+		var nodes, _nodes;
+		var color = ["#bdee54", "#54a4ee", "#ee5454"];
+		var name = ["三年级语文","三年级数学","三年级英语"];
+
+		$.ajax({
+		url: "http://172.16.32.218:8000/classroom/getAll/",
+		type: "GET",
+		origin: "171.16.32.218:8000",
+		host: "127.0.0.1",
+		dataType: "json",
+		success: function(subjId) {
+		var nodes = svg.selectAll("g")
+		    .data([100, 100, 100])
+			.enter()
+			.append("g")
+			.attr("transform", function(d, i) {
+				w = width*i/3 + 160;
+				h = height/2;
+				return "translate("+w+"," + h + ")";
+			})
+
+		var circle = nodes.append("circle")
+			// .attr("cy", height/2)
+			// .attr("cx", function(d, i) { return width*i/3 + 160; })
+			.attr("r", function(d) { return d; })
+			.attr("class", "node")
+			.style("fill", function(d, i) { return color[i]; })
+			.style("cursor", "pointer")
+
+		var node_text = nodes.append("text")
+			.attr("class","nodetext")
+			.style("text-anchor", "middle")
+			.text(function(d,i) { return name[i]; });
+
+		nodes.on("click", function(d, i) {
+			area_display(2);
+		})
+		}
+
+		})
+	}
+
+	init_display()
+
+	// area_display()
+	function area_display(subjectId = 2) {
+		d3.select("#graph-view svg").remove();
+		var svg = d3.select("#graph-view").append("svg")
+		.attr("width", width)
+		.attr("height", height);
+		var force = d3.layout.force()
+				.linkDistance(190)
+				.size([width, height]);
+		var nodes, links;
+		var _nodes = [], _links = [];
+		svg.empty();
+
+		// d3.json("areas.json", function(error, graph) {
+
+		graph = {
+			"nodes":[
+				{"id":1,"name":"计算题","group":1,"weight":5},
+				{"id":2,"name":"应用题","group":1,"weight":4},
+				{"id":3,"name":"数","group":1,"weight":15},
+				{"id":4,"name":"几何","group":1,"weight":85},
+				{"id":5,"name":"统计初步","group":1,"weight":85},
+				{"id":6,"name":"综合题","group":1,"weight":85}
+			]
+		}
+
+		// graph = {
+		// 	"nodes": []
+		// }
+
+		$.ajax({
+		url: "http://172.16.32.218:8000/classroom/getSubject/"+subjectId+"/",
+		type: "GET",
+		origin: "171.16.32.218:8000",
+		host: "127.0.0.1",
+		dataType: "json",
+		success: function(areaId) {
+		// graph.nodes = areaId;
+		// graph.nodes = JSON.parse(areaId);
+		_nodes.push({"id":0,"name":"数学-三年级下册","group":0, "fixed":true, "x":width/2,"y":height/2});
+		for (var i = 0; i < graph.nodes.length; ++i) {
+			graph.nodes[i]["group"] = 1;
+			graph.nodes[i]["weight"] = 50;
+			_nodes.push(graph.nodes[i]);
+			_links.push({"source":i+1,"target":0});
+		}
+
+		force.nodes(_nodes)
+			.links(_links)
+			.start()
+			.gravity(0)
+			.charge( function(d) {
+				if (d.id == 0) {return 0;} else {return 200;}
+			});
+		links = svg.selectAll(".link").data(_links)
+		nodes = svg.selectAll(".node").data(_nodes)
+
+		links
+			// .data(_links)
+			.enter()
+			.append("line")
+			.attr("class", "link")
+			.attr("stroke",function(d) {return color[1];})
+			.attr("stroke-opacity","0.8")
+			.style("stroke-width",2);
+		// nodes = svg.selectAll(".node")
+		nodes
+			.enter()
+			.append("g")
+			.attr("class", function(d) { return d.id == 0 ? "main_node center_node" : "area_node"; })
+			.style("pointer",function(d) { if(d.id != 0) return "cursor"; })
+
+		nodes.on("click", function(d) {
+			if(d.id == 0) return;
+			center_node = d3.select(this);
+			return chapter_display(svg.select(".main_node"), center_node, subjectId, d.id);
+		});
+
+		var circle = nodes.append("circle")
+			.attr("class", "node")
+			.attr("r",function(d){
+				if(d.id == 0) {
+					return 100;
+				} else {
+					return Math.sqrt(d.weight*300) + Math.random()*5 + 40;
+				}
+			})
+			.style("fill", function(d) { return color[d.group]; })
+			.on("mouseenter", function(d){
+				if (d.id == 0)
+					return;
+				var parent = d3.select(this).node().parentNode;
+				$(parent.parentNode).append($(parent))
+				d3.select(this).attr("r", 1.2*this.r.baseVal.value);
+			})
+			.on("mouseout", function(d) {
+				if (d.id == 0)
+					return;
+				d3.select(this)
+					.attr("r", this.r.baseVal.value/1.2);
+			});
+
+		var node_text = nodes.append("text")
+			.attr("class","nodetext")
+			.style("text-anchor", "middle")
+			.text(function(d) { return d.name; });
+
+
+		force.on("tick", function() {
+			nodes.attr("transform", function(d){
+				d.x = d.x < d.r/2 ? d.r/2 : d.x;
+				d.x = d.x + d.r/2 > width ? width - d.r/2 : d.x;
+				d.y = d.y < d.r/2 ? d.r/2 : d.y;
+				d.y = d.y + d.r/2 > height ? height - d.r/2 : d.y;
+				return "translate("+d.x+"," + d.y + ")";
+			});
+
+			links.attr("x1", function(d) { return d.source.x; })
+				.attr("y1", function(d) { return d.source.y; })
+				.attr("x2", function(d) { return d.target.x; })
+				.attr("y2", function(d) { return d.target.y; });
+			force.tick();
+		});
+		}
+		})
+
+		// });
+	};
+
+	// area_display();
+	function chapter_display(father_node, center_node, subjectId, areaId) {
+		d3.select("#graph-view svg").remove();
+		var svg = d3.select("#graph-view").append("svg")
+		.attr("width", width)
+		.attr("height", height);
+		var force = d3.layout.force()
+				.linkDistance(190)
+				.size([width, height]);
+		var nodes, links;
+		var _nodes = [], _links = [];
+
+		var father_name = father_node[0][0].__data__.name;
+		var center_name = center_node[0][0].__data__.name;
+
+		svg.empty();
+
+		graph = {
+			"nodes":[
+				{"id":1,"name":"图示法解应用题进阶","group":2,"weight":5},
+				{"id":2,"name":"间隔问题","group":2,"weight":4},
+				{"id":3,"name":"排队问题：环形排列","group":2,"weight":15},
+				{"id":4,"name":"和差倍问题","group":2,"weight":85},
+				{"id":5,"name":"鸡兔同笼","group":2,"weight":85},
+				{"id":6,"name":"盈亏问题","group":2,"weight":85}
+			]
+		}
+
+		// graph = {
+		// 	"nodes": []
+		// }
+
+		$.ajax({
+		url: "http://172.16.32.218:8000/classroom/getArea/" + areaId + "/",
+		type: "GET",
+		dataType: "json",
+		origin: "171.16.32.218:8000",
+		host: "127.0.0.1",
+		success: function(chapID) {
+			// graph.nodes = chapID;
+
+			_nodes.push({"id":0,"name":center_name,"group":0, "fixed":true, "x":width/2,"y":height/2});
+
+			for (var i = 0; i < graph.nodes.length; ++i) {
+				graph.nodes[i]["weight"] = 50;
+				graph.nodes[i]["group"] = 2;
+				_nodes.push(graph.nodes[i]);
+				_links.push({"source":i+1,"target":0});
+			}
+
+			force.nodes(_nodes)
+				.links(_links)
+				.start()
+				.gravity(0)
+				.charge( function(d) {
+					if (d.id == 0) {return 0;} else {return 200;}
+				});
+
+			links = svg.selectAll(".link").data(_links)
+			nodes = svg.selectAll(".node").data(_nodes)
+
+			links
+				// .data(_links)
+				.enter()
+				.append("line")
+				.attr("class", "link")
+				.attr("stroke",function(d) {return color[1];})
+				.attr("stroke-opacity","0.8")
+				.style("stroke-width",2);
+			// nodes = svg.selectAll(".node")
+			nodes
+				.enter()
+				.append("g")
+				.attr("class", function(d) { return d.id == 0 ? "center_node area_node" : "chapter_node"; })
+				.style("pointer",function(d) { if(d.id != 0) return "cursor"; })
+
+			nodes.on("click", function(d) {
+				if(d.id == 0) return;
+				center_node = d3.select(this);
+				// return chapter_display(svg.select(".main_node"), center_node, subjectId);
+			});
+
+			var circle = nodes.append("circle")
+				.attr("class", "node")
+				.attr("r",function(d){
+					if(d.id == 0) {
+						return 100;
+					} else {
+						return Math.sqrt(d.weight*300) + Math.random()*5 + 40;
+						// return 50;
+					}
+				})
+				.style("fill", function(d) { return color[d.group]; })
+				.on("mouseover", function(d){
+					if (d.id == 0)
+						return;
+					d3.selectAll("g.detail").remove();
+					d3.select(this).attr("r", 1.2*this.r.baseVal.value);
+					var optValue = [
+						{"text":"学习", "x": 0, "y": 0},
+						{"text":"练习", "x": 0, "y": 0}];
+					var parent = d3.select(this).node().parentNode;
+					$(parent.parentNode).append($(parent))
+					// d3.select(parent).append(d3.select(this));
+					var opt = d3.select(parent).selectAll("g")
+						.data(optValue)
+					opt
+						.enter()
+						.append("g")
+						.attr("class", "detail")
+					var rad = this.r.baseVal.value;
+					// console.log(parent);
+					// console.log(d3.select(parent));
+					var optValue = [{"text":"学习"},{"text":"练习"}];
+					var _x = d3.select(parent)[0][0].__data__.x;
+	                var _y = d3.select(parent)[0][0].__data__.y;
+	                var dist1 = Math.sqrt(Math.pow((_x - width/2), 2) + Math.pow((_y - height/2), 2));
+	                var x_sgn = (_x - width/2) > 0? 1 : -1;
+	                var y_sgn = (_y - height/2) > 0? 1 : -1;
+					// console.log(d3.select(this));
+					var circle = opt.append("circle")
+						.attr("r", 20)
+						.attr("cx", function(d,i) {
+							// var idc = (i == 0)? 1: -1
+							d.x = (rad * 1.2 + 50*i) * (_x - width/2) / dist1;
+	                        return d.x;
+						})
+						.attr("cy", function(d,i) {
+							var idc = (i == 0)? 1: -1
+							d.y = (rad * 1.2 + 50*i) * (_y - height/2) / dist1;
+	                        return d.y;
+						})
+						.attr("class", "opt-node")
+						.style("fill", color[1])
+
+					opt.append("text")
+						.style("text-anchor", "middle")
+						.attr("transform", function(d,i) {
+							h = d.y+5;
+							return "translate(" + d.x + "," + h + ")";
+						})
+						.text(function(d) {return d.text;})
+
+					opt.on('click', function(d, i) {
+						if (i == 0) {
+							console.log(chapID);
+							window.location.href = "#/study/studyppt/" + chapID;
+						} else {
+							window.location.href = "#/test/excercise/" + chapID;
+
+						}
+					})
+
+
+				})
+				.on("mouseout", function(d) {
+					if (d.id == 0)
+						return;
+					// d3.selectAll("g.detail").on("mouseout", function(d) {
+					// 	d3.select(this).remove();
+					// })
+					d3.select(this)
+						.attr("r", this.r.baseVal.value/1.2);
+				});
+
+			var node_text = nodes.append("text")
+				.attr("class","nodetext")
+				.style("text-anchor", "middle")
+				.text(function(d) { return d.name; });
+
+
+			// begin father node creation
+			var father_line = $(".link:first").clone(false, true) // deep clone
+					.attr("x1", "100").attr("y1", height/2)
+					.attr("x2", width/2).attr("y2", height/2)
+					.attr("stroke", color[1]);
+
+			father_line.insertAfter($(".link")[0]);
+
+			var father_node = $(".center_node").clone(false, true) // deep clone
+					.attr("class", "main_node")
+					.attr("transform", "translate(100," + height/2 + ")");
+			father_node.find("text").text(father_name).attr("class","main_node");
+			father_node.insertAfter($(".center_node"));
+
+			father_node.on("click", function(d) {
+				area_display(subjectId);
+			})
+
+
+			force.on("tick", function() {
+				nodes.attr("transform", function(d){
+					d.x = d.x < d.r/2 ? d.r/2 : d.x;
+					d.x = d.x + d.r/2 > width ? width - d.r/2 : d.x;
+					d.y = d.y < d.r/2 ? d.r/2 : d.y;
+					d.y = d.y + d.r/2 > height ? height - d.r/2 : d.y;
+					return "translate("+d.x+"," + d.y + ")";
+				});
+
+				links.attr("x1", function(d) { return d.source.x; })
+					.attr("y1", function(d) { return d.source.y; })
+					.attr("x2", function(d) { return d.target.x; })
+					.attr("y2", function(d) { return d.target.y; });
+				force.tick();
+			});
+		}
+		});
+}
+</script>

@@ -1,14 +1,14 @@
-var ImCtrl = function ($scope, $http,$state) {
+var ImCtrl = function ($scope, $http,$state,$stateParams) {
     $http({
       method  : 'GET',
-      url     : 'http://172.16.32.218:8000/classroom/learn/1/'
+      url     : __API_ROOT__+'/classroom/learn/'+$stateParams.chapter_id+'/'
             })
     .success(function (res){
-        alert(res);
-        $scope.ppt_div = res.ppt;
+        console.log(res);
+        $scope.PPT = res.PPT;
     })
     .error(function (res){
-      alert(res);
+      console.log(res);
     });
 }
 
