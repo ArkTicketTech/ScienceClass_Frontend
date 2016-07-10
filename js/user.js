@@ -53,12 +53,12 @@ var user = function ($http, $q) {
       .success(function (res){
         alert('login success');
         User.fetchInfo().then(function(){
-          deffered.resolve();
+          deferred.resolve();
         });
       })
       .error(function (res){
         alert(res);
-        deffered.reject(res);
+        deferred.reject(res);
       });
     }
   }
