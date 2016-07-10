@@ -72,6 +72,7 @@ scienceclass.controller('RootCtrl', function($scope, $rootScope, $mdDialog, $htt
   User.fetchInfo();
   $rootScope.lan = 'CN';
   $rootScope.headershow = true;
+  
   $scope.goto = function(path) {
     window.location.href = '#/' + path;
   };
