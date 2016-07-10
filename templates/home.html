@@ -1,15 +1,211 @@
 <div class="wrapper" style="padding-top:40px;height:100%;background: #edeff0;">
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3" style="height:100%;margin-top: 20px;">
       <ul class="list-group">
-        <li class="list-group-item">课程</li>
-        <li class="list-group-item">题本</li>
-        <li class="list-group-item">成就</li>
+        <li class="list-group-item" ng-click="urlgoto(1)">课程信息</li>
+        <li class="list-group-item" ng-click="urlgoto(2)">学习记录</li>
+        <li class="list-group-item" ng-click="urlgoto(3)">学习达人</li>
       </ul>
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-8">.col-md-8</div>
+    <div class="col-md-9" ng-show = "target == 1">
+        <div class="plan-top">
+                <h2>三年级下奥数</h2>
+                <div class="plan-meta">
+                    <div class="r">
+                        <div class="small-share r">
+                          <ul class="share-wrap">
+                            <li>
+                                <span class="share-txt">分享</span>
+                            </li>
+                          </ul>
+                        </div>
+                    </div>
+                    <span class="meta meta-tags">
+                        <span class="g-tag">奥数</span>
+                        <span class="g-tag">平面几何</span>
+                        <span class="g-tag">鸡兔同笼</span>
+                    </span>
+                    <span class="meta meta-course">28个章节</span>
+                    <span class="meta meta-member">121668人在学</span>
+                </div>
+        </div>
+        <div class="plan-step-wrap js-route-panel" id="js-route-panel">
+            <ul class="plan-step clearfix">
+                <li class="step-item clearfix step-first">
+                  <i class="line"></i>
+                  <i class="dot"></i>
+                  <div class="hd l" style="float:left;">Area1</div>
+                  <i class="v-line l"></i>
+                  <div class="bd l clearfix">
+                    <a href="" class="step-anchor open">
+                        <b>Chapter1</b>
+                        <i class="step-arr"></i>
+                    </a>
+                  <div>
+                  <div class="bd l clearfix">
+                    <a href="" class="step-anchor">
+                        <b>Chapter2</b>
+                        <i class="step-arr"></i>
+                    </a>
+                  <div>
+                  <div class="bd l clearfix">
+                    <a href="" class="step-anchor">
+                        <b>Chapter3</b>
+                        <i class="step-arr"></i>
+                    </a>
+                  <div>
+                </li>
+                <li class="step-item clearfix step-cur ">
+                  <i class="line"></i>
+                  <i class="dot"></i>
+                  <div class="hd l" style="float:left;">Area2</div>
+                  <i class="v-line l"></i>
+                  <div class="bd l clearfix">
+                    <a href="" class="step-anchor">
+                        <b>Chapter1</b>
+                        <i class="step-arr"></i>
+                    </a>
+                  <div>
+                  <div class="bd l clearfix">
+                    <a href="" class="step-anchor">
+                        <b>Chapter2</b>
+                        <i class="step-arr"></i>
+                    </a>
+                  <div>
+                  <div class="bd l clearfix">
+                    <a href="" class="step-anchor">
+                        <b>Chapter3</b>
+                        <i class="step-arr"></i>
+                    </a>
+                  <div>
+                </li>
+                <li class="step-item clearfix">
+                  <i class="line"></i>
+                  <i class="dot"></i>
+                  <div class="hd l" style="float:left;">Area3</div>
+                  <i class="v-line l"></i>
+                  <div class="bd l clearfix">
+                    <a href="" class="step-anchor">
+                        <b>Chapter1</b>
+                        <i class="step-arr"></i>
+                    </a>
+                  <div>
+                  <div class="bd l clearfix">
+                    <a href="" class="step-anchor">
+                        <b>Chapter2</b>
+                        <i class="step-arr"></i>
+                    </a>
+                  <div>
+                  <div class="bd l clearfix">
+                    <a href="" class="step-anchor">
+                        <b>Chapter3</b>
+                        <i class="step-arr"></i>
+                    </a>
+                  <div>
+                </li>
+                <li class="step-item clearfix step-cur step-last">
+                  <i class="line"></i>
+                  <i class="dot"></i>
+                  <div class="hd l" style="float:left;">Area4</div>
+                  <i class="v-line l"></i>
+                  <div class="bd l clearfix">
+                    <a href="" class="step-anchor ">
+                        <b>Chapter1</b>
+                        <i class="step-arr"></i>
+                    </a>
+                  <div>
+                  <div class="bd l clearfix">
+                    <a href="" class="step-anchor">
+                        <b>Chapter2</b>
+                        <i class="step-arr"></i>
+                    </a>
+                  <div>
+                  <div class="bd l clearfix">
+                    <a href="" class="step-anchor">
+                        <b>Chapter3</b>
+                        <i class="step-arr"></i>
+                    </a>
+                  <div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9" ng-show = "target == 2">
+        <div class="plan-top">
+                <h2>三年级下奥数</h2>
+                <div class="plan-meta">
+                    <div class="r">
+                        <div class="small-share r">
+                          <ul class="share-wrap">
+                            <li>
+                                <span class="share-txt">分享</span>
+                            </li>
+                          </ul>
+                        </div>
+                    </div>
+                    <span class="meta meta-tags">
+                        <span class="g-tag">奥数</span>
+                        <span class="g-tag">平面几何</span>
+                        <span class="g-tag">鸡兔同笼</span>
+                    </span>
+                    <span class="meta meta-course">28个章节</span>
+                    <span class="meta meta-member">121668人在学</span>
+                </div>
+        </div>
+        <div class="reports-static clearfix" style="margin-top:10px;">
+            <div class="reports-user l">
+                <a href="/u/1915521/plans">
+                    <img src="http://img.mukewang.com/user/5333a2590001069f02000200-80-80.jpg">
+                    <span class="name">wfnuser</span>
+                    <span class="join-time" data-time="1445272737" id="js-join-time"><b>264天前</b>加入该课程</span>
+                </a>
+            </div>
+            <div class="reports-metas">
+                <span class="meta-progress">
+                    <b class="num">3<i>%</i></b>
+                    <em class="name">课程完成进度</em>
+                </span>
+                <span class="meta-progress">
+                    <b class="num">27<i>分钟</i></b>
+                    <em class="name">学习耗时</em>
+                </span>
+                <span class="meta-progress">
+                    <b class="num">1<i>/28节</i></b>
+                    <em class="name">完成课节</em>
+                </span>
+                <span class="meta-progress">
+                    <b class="num">140<i>位</i></b>
+                    <em class="name">7日学霸排行榜</em>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9" ng-show = "target == 3">
+        <div class="plan-top">
+                <h2>三年级下奥数</h2>
+                <div class="plan-meta">
+                    <div class="r">
+                        <div class="small-share r">
+                          <ul class="share-wrap">
+                            <li>
+                                <span class="share-txt">分享</span>
+                            </li>
+                          </ul>
+                        </div>
+                    </div>
+                    <span class="meta meta-tags">
+                        <span class="g-tag">奥数</span>
+                        <span class="g-tag">平面几何</span>
+                        <span class="g-tag">鸡兔同笼</span>
+                    </span>
+                    <span class="meta meta-course">28个章节</span>
+                    <span class="meta meta-member">121668人在学</span>
+                </div>
+        </div>
+    </div>
+
+
   </div>
 </div>
 </div>

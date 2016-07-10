@@ -1,5 +1,11 @@
-var HomeCtrl = function ($scope, $http,$state, User, $rootScope) {
+var HomeCtrl = function ($scope, $http, $state, User, $rootScope, $stateParams) {
   $rootScope.headershow = true;
+
+  $scope.target = $stateParams.typeId;
+
+  $scope.urlgoto = function (target) {
+      $state.go("home",{typeId:target});
+  }
 
   $scope.submit = function () {
         //todo
