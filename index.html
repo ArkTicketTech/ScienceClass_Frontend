@@ -14,9 +14,10 @@
     <title>Science Class</title>
   </head>
   <body ng-controller="RootCtrl" ng-cloak>
-    <md-toolbar ng-show="$rootScope.headershow">
+    <md-toolbar ng-show="$root.headershow">
+    <div class="container">
       <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings" ng-click="goto('fileList')">
+        <md-button class="md-icon-button" aria-label="Settings">
           <i class="fa fa-align-justify" aria-hidden="true"></i>
         </md-button>
         <h2>
@@ -28,17 +29,17 @@
             <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
           </md-button>
           <md-menu-content width="4">
-            <md-menu-item ng-show="userInfo.role == 'admin'">
+            <md-menu-item>
               <md-button ng-click="goto('setting')">
                 设置
               </md-button>
             </md-menu-item>
-            <md-menu-item ng-show="userInfo.role == 'admin'">
+            <md-menu-item>
               <md-button ng-click="goto('manage')">
                 管理
               </md-button>
             </md-menu-item>
-            <md-divider ng-show="isAdmin"></md-divider>
+            <md-divider></md-divider>
             <md-menu-item>
               <md-button ng-click="logout()">
                 登出
@@ -48,6 +49,7 @@
         </md-menu>
       </div>
     </md-toolbar>
+    </div>
     <div id="wrapper" style="height:100%;" ui-view>
     </div>
     <script src="lib/jquery/jquery.min.js"></script>
