@@ -1,4 +1,4 @@
-var LoginCtrl = function ($scope, $http, User, $rootScope) {
+var LoginCtrl = function ($scope, $http, User, $rootScope,$state) {
 
   $rootScope.headershow = false;
 
@@ -8,6 +8,9 @@ var LoginCtrl = function ($scope, $http, User, $rootScope) {
     }
   });
   $scope.user = {};
+  $scope.register= function() {
+    $state.go('register');
+  }
   $scope.submit = function () {
         //User.login($scope.user).then(function(){
         //  window.location.href = '#/home';
@@ -21,7 +24,6 @@ var LoginCtrl = function ($scope, $http, User, $rootScope) {
           headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
               })
         .success(function (res){
-          alert('login success');
           User.fetchInfo().then(function(){
             window.location.href = '#/graph';
 

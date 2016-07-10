@@ -1,4 +1,4 @@
-var WorkCtrl = function ($scope, $http,$state) {
+var WorkCtrl = function ($scope, $http, $state) {
     $scope.works=[];
     $http({
       method  : 'GET',

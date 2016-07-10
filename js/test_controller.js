@@ -1,4 +1,4 @@
-var TestCtrl = function ($scope, $http, $rootScope, $stateParams) {
+var TestCtrl = function ($scope, $http, $rootScope, $stateParams,$state) {
   $scope.id = $stateParams.chapter_id;
   var convertToQuestions = require('./convert-test.js');
   $scope.user = {};
@@ -60,6 +60,9 @@ var TestCtrl = function ($scope, $http, $rootScope, $stateParams) {
     }
   }
 
+  $scope.toStudy = function() {
+    window.location.href="#/study/studyppt/1";
+    }
   $scope.submit = function(){
     $scope.useranswer[$scope.curr] = $scope.answer;
     for ( var index in $scope.useranswer ) {

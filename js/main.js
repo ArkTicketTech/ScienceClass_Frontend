@@ -1,6 +1,6 @@
 require('../css/base.less');
-require('../css/test.less')
-require('../css/home.less')
+require('../css/test.less');
+require('../css/home.less');
 
 var scienceclass = angular.module('scienceclass', ['ui.bootstrap', 'ui.router', 'ngMaterial','ngSanitize', 'timer']);
 scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider,$sceProvider) {
