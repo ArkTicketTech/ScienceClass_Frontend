@@ -1,6 +1,7 @@
 require('../css/base.less');
-require('../css/test.less');
-//require('../css/graph.less');
+require('../css/test.less')
+require('../css/home.less')
+
 var scienceclass = angular.module('scienceclass', ['ui.bootstrap', 'ui.router', 'ngMaterial','ngSanitize', 'timer']);
 scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider, $httpProvider,$sceProvider) {
   $sceProvider.enabled(false);
@@ -20,7 +21,7 @@ scienceclass.config(function($stateProvider, $urlRouterProvider, $mdThemingProvi
       controller: 'RegisterCtrl'
     })
     .state('home', {
-      url: '/home',
+      url: '/home/:typeId',
       templateUrl: 'templates/home.html',
       controller: 'HomeCtrl'
     })
