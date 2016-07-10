@@ -26,7 +26,7 @@ var user = function ($http, $q) {
       var deferred = $q.defer();
       $http({
         method  : 'POST',
-        url     : 'http://172.16.32.218:8000/center/login/',
+        url     : __API_ROOT__+'/center/login/',
         data    : $.param(user),
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
@@ -46,7 +46,7 @@ var user = function ($http, $q) {
       var deferred = $q.defer();
       $http({
         method  : 'POST',
-        url     : 'http://172.16.32.218:8000/center/register/',
+        url     : __API_ROOT__+'/center/register/',
         data    : $.param(user),
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
             })

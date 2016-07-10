@@ -2,7 +2,7 @@ var WorkCtrl = function ($scope, $http, $state) {
     $scope.works=[];
     $http({
       method  : 'GET',
-      url     : 'http://172.16.32.218:8000/classroom/exercises/1/5/'
+      url     : __API_ROOT__+'/classroom/exercises/1/5/'
             })
     .success(function (result){
       result.forEach(function(work_str) {

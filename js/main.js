@@ -72,12 +72,12 @@ scienceclass.controller('RootCtrl', function($scope, $rootScope, $mdDialog, $htt
   User.fetchInfo();
   $rootScope.lan = 'CN';
   $rootScope.headershow = true;
-  
+
   $scope.goto = function(path) {
     window.location.href = '#/' + path;
   };
   $scope.logout = function() {
-    $http.get(__API_ROOT__ + '/center/user/logout')
+    $http.get(__API_ROOT__ + '/center/logout')
       .success(function (res){
         User.info.isLogin = false;
         window.location.href = '#/login'

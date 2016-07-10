@@ -72,7 +72,7 @@ var TestCtrl = function ($scope, $http, $rootScope, $stateParams,$state) {
     var state = $scope.correctnum > 7;
     $http({
       method  : 'POST',
-      url     : 'http://172.16.32.218:8000/classroom/test/1/10/',
+      url     : __API_ROOT__+'/classroom/test/1/10/',
       data    : $.param(state),
       headers : { 'Content-Type': 'application/json' }
           })
